@@ -1,0 +1,31 @@
+{
+  "name": "govelo",
+  "version": "1.0.0",
+  "description": "Symfony Standard Edition ========================",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gmirmand/govelo.git"
+  },
+  "author": "TeamGoVelo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gmirmand/govelo/issues"
+  },
+  "homepage": "https://github.com/gmirmand/govelo#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^3.4.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "pump": "^1.0.2"
+  }
+}
