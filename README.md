@@ -13,6 +13,7 @@ To start working
 * composer install or composer update
 * npm i
 * get uploads
+* check app/config/parameters.yml
 
 What's inside?
 --------------
