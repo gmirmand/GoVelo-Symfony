@@ -10,10 +10,10 @@ For details on how to download and get started with Symfony, see the
 To start working
 --------------
 * Get database
-* composer install or composer update
+* composer install
 * npm i
-* get uploads
-* check app/config/parameters.yml
+* *get uploads*
+* *check app/config/parameters.yml*
 
 What's inside?
 --------------
