@@ -1,0 +1,8 @@
+.page-home {
+  background-color: $color-lightgrey;
+  font-family: $font-Arial;
+  @include fontSize(18px);
+  @include respond-to(s) {
+    font-size: inherit;
+  }
+}

@@ -1,86 +1,132 @@
-'use strict';
+/**
+ * Created by gmirmand.
+ */
 
 var gulp = require('gulp');
+var jshint = require('gulp-jshint');
 var sass = require('gulp-sass');
-const autoprefixer = require('gulp-autoprefixer');
-var concat = require('gulp-concat');
+var autoprefixer = require('gulp-autoprefixer');
 var uglify = require('gulp-uglify');
-var pump = require('pump');
-const imagemin = require('gulp-imagemin');
+var concat = require('gulp-concat');
+var plumber = require('gulp-plumber');
+var minifyCss = require('gulp-minify-css');
+var rename = require('gulp-rename');
 var browserSync = require('browser-sync').create();
+var sassGlob = require('gulp-sass-glob');
 
-//Paths
-var PATHS = {
-    css: {
-        src: ['src/web/sass/main.scss'] ,
-        dest: [''],
-        watch: ['src/web/sass/**/*.scss']
-    },
+
+// Static server
+gulp.task('browser-sync', function () {
+    browserSync.init({
+        'port': 8080,
+        'proxy': 'govelo.dev/app_dev.php'
+    });
+});
+
+var sassOptions = {
+    errLogToConsole: true,
+    outputStyle: 'expanded'
+};
+
+
+var autoprefixerOptions = {
+    browsers: ['last 3 versions'],
+    cascade: false
+};
+
+var paths = {
+    sass: ["src/web/sass/**/*.scss"],
+    html: ['src/AppBundle/Resources/views/**/*.twig', 'src/AppBundle/Resources/views/*.twig'],
     js: {
-        src: ['src/web/js/**/*.js'],
-        dest: [''],
-        watch: ['src/web/js/**/*.js']
-    },
-    img: {
-        src: ['src/web/img'],
-        dest: [''],
-        watch: ['src/web/img/*']
+        src: {
+            vendors: [
+                // Libraries
+                'src/web/js/vendor/jquery-1.11.2.min.js'
+            ],
+            app: [
+                // Custom
+                'src/web/js/components/*.js',
+                'src/web/js/pages/*.js',
+                'src/web/js/script.js'
+            ]
+        },
+        dest: 'web/js/min/',
+        watch: [
+            // Custom
+            'src/web/js/**/*.js'
+        ]
     }
 };
 
+
+function swallowError(error) {
+
+    // If you want details of the error in the console
+    console.log(error.toString());
+    this.emit('end')
+}
+
+gulp.task('default', ['sass', 'scripts-app', 'scripts-vendors']);
+
+//sass task
 gulp.task('sass', function () {
-    return gulp.src(PATHS.css.src)
-        .pipe(sass.sync().on('error', sass.logError))
-        .pipe(gulp.dest(PATHS.css.dest));
-});
-
-gulp.task('autoprefixer', function () {
-    gulp.src(PATHS.css.dest)
-        .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
-            cascade: falses
+    gulp.src('src/web/sass/main.scss')
+        .pipe(plumber())
+        .pipe(sassGlob())
+        .pipe(sass())
+        .pipe(autoprefixer(autoprefixerOptions))
+        .pipe(gulp.dest('web/css/'))
+        .pipe(minifyCss({
+            keepSpecialComments: 0
         }))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('web/css/'))
+        .pipe(browserSync.stream())
+    ;
 });
 
-gulp.task('concat', function() {
-    return gulp.src(PATHS.js.src)
-        .pipe(concat('all.js'))
-        .pipe(gulp.dest(PATHS.js.dest));
-});
-
-gulp.task('compress', function (cb) {
-    pump([
-            gulp.src(PATHS.js.src),
-            uglify(),
-            gulp.dest(PATHS.js.dest)
-        ],
-        cb
-    );
-});
-
-gulp.task('imagemin', function () {
-    gulp.src(PATHS.img.src)
-        .pipe(imagemin())
-        .pipe(gulp.dest(PATHS.img.dest))
-});
-
-gulp.task('browser-sync', function() {
-    browserSync.init({
-        proxy: "govelo.dev"
-    });
-});
-
-gulp.task('serve', ['sass'], function() {
-
-    browserSync.init({
-        server: "./app"
+/**
+ * Script task JS
+ */
+gulp.task(
+    'scripts-app', function () {
+        // create filter instance inside task function
+        return gulp.src(paths.js.src.app)
+            .pipe(plumber())
+            .pipe(jshint())
+            .pipe(jshint.reporter('jshint-stylish'))
+            .pipe(concat('app.js'))
+            .pipe(rename({suffix: '.min'}))
+            // .pipe(ngAnnotate())
+            .pipe(uglify())
+            .pipe(gulp.dest(paths.js.dest));
     });
 
-    gulp.watch("app/scss/*.scss", ['sass']);
-    gulp.watch("app/*.html").on('change', browserSync.reload);
+gulp.task(
+    'scripts-vendors', function () {
+        // create filter instance inside task function
+        return gulp.src(paths.js.src.vendors)
+        // // .pipe(sourcemaps.init())
+            .pipe(concat('vendors.js'))
+            .pipe(rename({suffix: '.min'}))
+            // .pipe(ngAnnotate())
+            .pipe(uglify())
+            .pipe(gulp.dest(paths.js.dest));
+    });
+
+
+// create a task that ensures the `js` task is complete before
+// reloading browsers
+gulp.task('js-watch', ['scripts-app'], function (done) {
+    browserSync.reload();
+    done();
+});
+gulp.task('reload', function (done) {
+    browserSync.reload();
+    done();
 });
 
-gulp.task('watch', function () {
-    gulp.watch(PATHS.css.watch, ['sass']);
+gulp.task('watch', ['browser-sync'], function () {
+    gulp.watch(paths.html, ['reload']);
+    gulp.watch(paths.sass, ['sass']);
+    gulp.watch(paths.js.watch, ['js-watch']);
 });
