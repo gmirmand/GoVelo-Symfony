@@ -15,6 +15,12 @@ To start working
 * *get uploads*
 * *check app/config/parameters.yml*
 
+Update doctrine
+--------------
+
+* composer install
+* php bin/console d:s:u --force
+
 What's inside?
 --------------
 
