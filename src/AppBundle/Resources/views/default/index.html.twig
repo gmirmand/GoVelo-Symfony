@@ -1,10 +1,44 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <header class="header-banner-top">
+
+        <div class="main-navigation">
+            <input type="checkbox" name="mobile-menu-toggle" id="mobile-menu-toggle" class="mobile-menu-box"/>
+            <nav class="horizontal-nav primary-wrapper" role='navigation'>
+                <ul>
+                    <li class="active-link"><a href="#"><img src="{{ asset('img/logo_blanc_100.png') }}" alt="GoVélo!">
+                        </a></li>
+                    <li class="active-link"><a href="#">Accueil</a></li>
+                    <li><a href="#">Concept</a></li>
+                    <li><a href="#">Vidéo</a></li>
+                    <li><a href="#">Fonctionnalités</a></li>
+                    <li><a href="#">Télécharger</a></li>
+                </ul>
+                <button class="button__inverse">Télécharger</button>
+
+            </nav>
+            <label for="mobile-menu-toggle" class="mobile-menu-label "></label>
+        </div>
+
+        <div class="banner row">
+
+            <div class="primary-wrapper col-md-6 col-md-offset-6">
+
+                <h1 class="site-title"><a href="#">SITE TITLE</a></h1>
+                <div class="site-tagline">Tagline. Aenean lacinia bibendum nulla sed consectetur. Maecenas sed diam eget
+                    risus varius blandit sit amet non magna. Nulla vitae elit libero, a pharetra augue.
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
     <div id="wrapper">
         <div id="container">
             <div id="welcome">
-                <h1><span>Bienvenu sur test</span> GoVélo</h1>
+                <h1><span>Bienvenu sur</span> GoVélo NTM</h1>
             </div>
 
         </div>

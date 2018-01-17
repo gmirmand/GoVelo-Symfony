@@ -1,7 +1,6 @@
 var home = {
     container: $('.page-home'), /*<- tu peux définir des selecteur*/
     val: 'Coucou', /*<- ou des variables*/
-
     init: function () {
         console.log('Home init');
         home.test();

@@ -1,5 +1,14 @@
 .button {
-  &__contact {
+  &__inverse {
+    border:3px solid #fff;
+    padding:0.5em 0.5em;
+    color:#fff;
+    background-color:transparent;
+
+    &::hover{
+      background-color:#fff;
+      color:transparent;
+    }
   }
   &__zoom {
   }
