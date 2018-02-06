@@ -279,5 +279,16 @@ class announcement
     {
         return $this->lockCode;
     }
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\User", inversedBy="announcements")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $author;
+    
+    public function getAuthor(): User
+    {
+        return $this->author;
+    }
 }
 

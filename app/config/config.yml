@@ -20,6 +20,8 @@ framework:
     csrf_protection: ~
     validation: { enable_annotations: true }
     #serializer: { enable_annotations: true }
+    serializer:
+        enabled: true
     templating:
         engines: ['twig']
     default_locale: '%locale%'
@@ -77,3 +79,9 @@ fos_user:
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
+        
+fos_rest:
+    routing_loader:
+        include_format: false
+    view:
+        view_response_listener: true

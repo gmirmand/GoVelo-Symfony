@@ -4,7 +4,7 @@
 #    prefix:   /
 
 app:
-    resource: '@AppBundle/Controller/'
+    resource: '@ApiBundle/Controller/'
     type: annotation
 
 fos_user_security:
@@ -28,3 +28,7 @@ fos_user_change_password:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    
+announcement:
+    type: rest
+    resource: ApiBundle\Controller\AnnouncementController
