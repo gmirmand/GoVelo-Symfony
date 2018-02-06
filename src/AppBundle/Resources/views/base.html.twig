@@ -2,13 +2,19 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}GoVélo!{% endblock %}</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
 </head>
 <body class="page-home">
+{% block header %}
+    {% include('Template/header.html.twig') %}
+{% endblock %}
 {% block body %}
+{% endblock %}
+{% block footer %}
+    {% include('Template/footer.html.twig') %}
 {% endblock %}
 </body>
 <script src="{{ asset('js/min/vendors.min.js') }}"></script>

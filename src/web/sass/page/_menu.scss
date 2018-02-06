@@ -68,14 +68,10 @@
 
     position: relative;
 
-    //stretch banner image to fill .banner
-    .banner-image {
-      position: absolute;
-      top: 0; right: 0; bottom: 0; left: 0;
-    }
-
     .primary-wrapper {
       position: relative; // bring the text back on top
+      width:50%;
+      margin-left:50%;
     }
   }
 }
@@ -137,21 +133,22 @@
       padding-bottom: 150px;
     }
 
-    .site-title {
-
-      letter-spacing: 2px;
-      font-size: 52px;
-      margin: 0 0 20px;
-
-      a { color: #fff; text-decoration: none; }
-
+    .site-title img{
+        width:50%;
     }
 
-    .site-tagline {
-      color: #aaa;
+    .site-tagline{
+      color: #fff;
       letter-spacing: 1px;
-      font-size: 14px;
       margin: 0 20%;
+      font-family:$font-titre;
+      span{
+        font-size:30px;
+      }
+      h1,p{
+        font-size: 22px;
+      }
+
     }
 
   }

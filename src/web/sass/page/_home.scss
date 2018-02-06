@@ -1,9 +1,124 @@
 .page-home {
-  background-color: $color-lightgrey;
   font-family: $font-Arial;
   @include fontSize(18px);
   @include respond-to(s) {
     font-size: inherit;
   }
 }
+.responsive_img{
+  width:100%;
+  height:auto;
+}
+#landin-page{
+  background-color: #fff;
+  #application,#application-fonctionnalite,#actualite_title{
+    text-align:center;
+  }
+  h2.blue_text{
+    color:$bleu;
+    font-family: $font-titre;
+    font-size: 5em;
+  }
+  p{ font-size: 1.5em;}
 
+}
+#application{
+  .mochup-img{
+
+  }
+
+  #text_application{
+    padding:4em;
+    p{
+      text-align:justify;
+    }
+
+  }
+}
+#application-video{
+  height:150px;
+  background-color: gray;
+}
+#application-fonctionnalite{
+  padding: 3em;
+  p{
+    width: 60%;
+    margin: 0 auto;
+  }
+  .icon_img{
+    height:50px;
+    width:auto;
+    margin:5em;
+  }
+}
+
+#info_type{
+  color:#fff;
+  display:flex;
+  flex-direction: column;
+  @include respond-to(s){
+    flex-direction: row;
+  }
+  #proprietaire_zone{
+    background-color: $bleu;
+  }
+  #usager_zone{
+    background-color:$vert;
+  }
+  #proprietaire_zone, #usager_zone{
+    flex-basis: 50%;
+    padding: 5em 0;
+    @include respond-to(s){
+      padding: 10em 0;
+    }
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    h2{
+      font-family: $font-titre;
+      display: inline;
+      margin: 0;
+    }
+  }
+}
+
+#actualites{
+  padding:5em 5em 10em 5em;
+  color:$noir;
+  .actualite_container{
+    border:2px solid transparent;
+    border-bottom-width:10px;
+    border-image: linear-gradient(135deg, $bleu, $vert) 1;
+    padding:3em;
+    margin:2em;
+    p{
+      text-align:justify;
+    }
+  }
+}
+#application-telechargement{
+  color:#fff;
+  background:linear-gradient(to bottom right, $bleu, $vert) ;
+  #text_telechargement{
+    padding:5em;
+    .logo_img{
+      width:49%;
+      float:left;
+      &:nth-of-type(1){
+        margin-right:2%;
+      }
+    }
+  }
+  #img_telechargement{
+    img{
+      margin-top:-80px;
+    }
+  }
+
+}
+#footer{
+  text-align:center;
+  background-color:$noir;
+  color:#fff;
+  padding:20px;
+}
