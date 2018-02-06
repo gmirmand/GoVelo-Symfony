@@ -282,13 +282,25 @@ class announcement
     
     /**
      * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\User", inversedBy="announcements")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=false)
      */
     private $author;
     
-    public function getAuthor(): User
+    public function getAuthor()//: User
     {
-        return $this->author;
+        
+        $return = array (
+            "email" => $this->author->getEmail(),
+            "firstname" => $this->author->getFirstname(),
+            "lastname" => $this->author->getLastname(),
+            "birth" => $this->author->getBirth(),
+            "phone" => $this->author->getPhone(),
+            "picture" => $this->author->getPicture(),
+        );
+        
+        
+        return $return;
+        //return $this->author;
     }
 }
 
