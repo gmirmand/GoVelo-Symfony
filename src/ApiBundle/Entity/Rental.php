@@ -2,11 +2,13 @@
 
 namespace ApiBundle\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Rental
  *
+ * @ApiResource
  * @ORM\Table(name="rental")
  * @ORM\Entity(repositoryClass="ApiBundle\Repository\RentalRepository")
  */

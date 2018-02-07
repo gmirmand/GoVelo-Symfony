@@ -2,11 +2,13 @@
 
 namespace ApiBundle\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * medal
  *
+ * @ApiResource
  * @ORM\Table(name="medal")
  * @ORM\Entity(repositoryClass="ApiBundle\Repository\medalRepository")
  */

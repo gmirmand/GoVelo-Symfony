@@ -2,11 +2,13 @@
 
 namespace ApiBundle\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * announcement
  *
+ * @ApiResource
  * @ORM\Table(name="announcement")
  * @ORM\Entity(repositoryClass="ApiBundle\Repository\announcementRepository")
  */
@@ -285,10 +287,10 @@ class announcement
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;
-    
+
     public function getAuthor()//: User
     {
-        
+
         $return = array (
             "email" => $this->author->getEmail(),
             "firstname" => $this->author->getFirstname(),
@@ -297,8 +299,8 @@ class announcement
             "phone" => $this->author->getPhone(),
             "picture" => $this->author->getPicture(),
         );
-        
-        
+
+
         return $return;
         //return $this->author;
     }

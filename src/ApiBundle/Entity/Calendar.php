@@ -2,11 +2,13 @@
 
 namespace ApiBundle\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Calendar
  *
+ * @ApiResource
  * @ORM\Table(name="calendar")
  * @ORM\Entity(repositoryClass="ApiBundle\Repository\CalendarRepository")
  */

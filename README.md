@@ -14,6 +14,7 @@ To start working
 * npm i
 * *get uploads*
 * *check app/config/parameters.yml*
+* php bin/console assets:install
 
 Update doctrine
 --------------

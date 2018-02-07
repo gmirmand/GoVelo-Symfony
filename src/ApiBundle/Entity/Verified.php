@@ -2,11 +2,13 @@
 
 namespace ApiBundle\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Verified
  *
+ * @ApiResource
  * @ORM\Table(name="verified")
  * @ORM\Entity(repositoryClass="ApiBundle\Repository\VerifiedRepository")
  */

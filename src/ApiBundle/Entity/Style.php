@@ -2,11 +2,13 @@
 
 namespace ApiBundle\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Style
  *
+ * @ApiResource
  * @ORM\Table(name="style")
  * @ORM\Entity(repositoryClass="ApiBundle\Repository\StyleRepository")
  */

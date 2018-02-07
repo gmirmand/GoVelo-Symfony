@@ -1,11 +1,11 @@
-#api:
-#    resource: "@ApiBundle/Controller/"
-#    type:     annotation
-#    prefix:   /
-
 app:
     resource: '@ApiBundle/Controller/'
     type: annotation
+
+api:
+    resource: '.'
+    type: 'api_platform'
+    prefix: '/api' # Optional
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

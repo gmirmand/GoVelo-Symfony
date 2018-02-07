@@ -2,11 +2,13 @@
 
 namespace ApiBundle\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Comment
  *
+ * @ApiResource
  * @ORM\Table(name="comment")
  * @ORM\Entity(repositoryClass="ApiBundle\Repository\CommentRepository")
  */

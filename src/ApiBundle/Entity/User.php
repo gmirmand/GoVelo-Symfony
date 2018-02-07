@@ -3,11 +3,13 @@
 namespace ApiBundle\Entity;
 
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * @ApiResource
  * @ORM\Entity
  * @ORM\Table(name="user")
  */

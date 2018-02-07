@@ -2,11 +2,13 @@
 
 namespace ApiBundle\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * State
  *
+ * @ApiResource
  * @ORM\Table(name="state")
  * @ORM\Entity(repositoryClass="ApiBundle\Repository\StateRepository")
  */
