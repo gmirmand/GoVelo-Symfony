@@ -302,5 +302,17 @@ class announcement
         return $return;
         //return $this->author;
     }
+    
+        
+    /**
+     * @ORM\ManyToMany(targetEntity="ApiBundle\Entity\Calendar", inversedBy="announcements")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $calendar; 
+    
+    public function getCalendar() 
+    {
+        return $this->calendar; 
+    }
 }
 
