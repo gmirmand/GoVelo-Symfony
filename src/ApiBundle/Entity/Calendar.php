@@ -40,7 +40,7 @@ class Calendar
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="start", type="date", nullable=true)
+     * @ORM\Column(name="start", type="datetime", nullable=true)
      */
     private $start;
 

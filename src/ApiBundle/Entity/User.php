@@ -200,4 +200,52 @@ class User extends BaseUser {
     {
         return $this->sexe;
     }
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\Verified", inversedBy="user")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $verified;
+    
+    public function getVerified() //: Verified 
+    {
+        if ($this->verified) {
+            
+            $id = $this->verified->getId(); 
+
+            if ($id) {
+                $return = true; 
+            }else {
+                $return = false; 
+            }
+        } else {
+            $return = false; 
+        }
+        return $return; 
+    }
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="ApiBundle\Entity\Comment", inversedBy="user")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    // A REVOIR LES COMMENTAIRES VOIR LE DRIVE
+    /*private $comment;
+    
+    public function getComment() 
+    {
+        return $this->comment; 
+    }*/
+    
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="ApiBundle\Entity\medal", inversedBy="user")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $medal;
+    
+    public function getMedal() 
+    {
+        return $this->medal; 
+    }
+    
 }
