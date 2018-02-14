@@ -51,6 +51,11 @@ class Calendar
      */
     private $end;
 
+	/**
+	 * @ORM\ManyToMany(targetEntity="ApiBundle\Entity\announcement", mappedBy="calendar")
+	 */
+	protected $announcement;
+
 
     /**
      * Get id
@@ -157,5 +162,45 @@ class Calendar
     {
         return $this->end;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->announcement = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add announcement
+     *
+     * @param \ApiBundle\Entity\announcement $announcement
+     *
+     * @return Calendar
+     */
+    public function addAnnouncement(\ApiBundle\Entity\announcement $announcement)
+    {
+        $this->announcement[] = $announcement;
+
+        return $this;
+    }
+
+    /**
+     * Remove announcement
+     *
+     * @param \ApiBundle\Entity\announcement $announcement
+     */
+    public function removeAnnouncement(\ApiBundle\Entity\announcement $announcement)
+    {
+        $this->announcement->removeElement($announcement);
+    }
+
+    /**
+     * Get announcement
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAnnouncement()
+    {
+        return $this->announcement;
+    }
+}

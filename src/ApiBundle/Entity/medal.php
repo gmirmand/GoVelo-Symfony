@@ -44,6 +44,11 @@ class medal
      */
     private $imgMedal;
 
+	/**
+	 * @ORM\ManyToMany(targetEntity="ApiBundle\Entity\User", mappedBy="medal")
+	 */
+	protected $user;
+
 
     /**
      * Get id

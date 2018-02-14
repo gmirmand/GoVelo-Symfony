@@ -3,13 +3,17 @@
 namespace ApiBundle\Entity;
 
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
+use ApiPlatform\Core\Annotation\ApiProperty;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource
+ *
  * @ORM\Entity
  * @ORM\Table(name="user")
  */
@@ -50,6 +54,19 @@ class User extends BaseUser {
 	 * @ORM\Column(type="integer")
 	 */
     protected $sexe;
+
+	/**
+	 * @ORM\OneToMany(targetEntity="ApiBundle\Entity\announcement", mappedBy="author")
+	 * @ORM\JoinColumn(name="author_id", referencedColumnName="id", unique=true)
+	 * @ApiSubresource
+	 */
+	public $announcement;
+
+	/**
+	 * @ORM\OneToOne(targetEntity="ApiBundle\Entity\Verified", inversedBy="user")
+	 * @ORM\JoinColumn(name="verified_id", referencedColumnName="id" ,nullable=true)
+	 */
+	private $verified;
 
     
 	public function __construct() {
@@ -201,12 +218,6 @@ class User extends BaseUser {
         return $this->sexe;
     }
     
-    /**
-     * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\Verified", inversedBy="user")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $verified;
-    
     public function getVerified() //: Verified 
     {
         if ($this->verified) {
@@ -225,27 +236,76 @@ class User extends BaseUser {
     }
     
     /**
-     * @ORM\ManyToMany(targetEntity="ApiBundle\Entity\Comment", inversedBy="user")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    // A REVOIR LES COMMENTAIRES VOIR LE DRIVE
-    /*private $comment;
-    
-    public function getComment() 
-    {
-        return $this->comment; 
-    }*/
-    
-    
-    /**
      * @ORM\ManyToMany(targetEntity="ApiBundle\Entity\medal", inversedBy="user")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(name="medal_id", referencedColumnName="id" ,nullable=true)
      */
     private $medal;
-    
-    public function getMedal() 
+
+    public function getMedal()
     {
-        return $this->medal; 
+        return $this->medal;
     }
     
+
+    /**
+     * Set announcement
+     *
+     * @param string $announcement
+     *
+     * @return User
+     */
+    public function setAnnouncement($announcement)
+    {
+        $this->announcement = $announcement;
+
+        return $this;
+    }
+
+    /**
+     * Get announcement
+     *
+     * @return string
+     */
+    public function getAnnouncement()
+    {
+        return $this->announcement;
+    }
+
+    /**
+     * Set verified
+     *
+     * @param \ApiBundle\Entity\Verified $verified
+     *
+     * @return User
+     */
+    public function setVerified(\ApiBundle\Entity\Verified $verified = null)
+    {
+        $this->verified = $verified;
+
+        return $this;
+    }
+
+    /**
+     * Add medal
+     *
+     * @param \ApiBundle\Entity\medal $medal
+     *
+     * @return User
+     */
+    public function addMedal(\ApiBundle\Entity\medal $medal)
+    {
+        $this->medal[] = $medal;
+
+        return $this;
+    }
+
+    /**
+     * Remove medal
+     *
+     * @param \ApiBundle\Entity\medal $medal
+     */
+    public function removeMedal(\ApiBundle\Entity\medal $medal)
+    {
+        $this->medal->removeElement($medal);
+    }
 }

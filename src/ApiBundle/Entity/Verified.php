@@ -37,6 +37,11 @@ class Verified
      */
     private $scanRc;
 
+	/**
+	 * @ORM\OneToOne(targetEntity="ApiBundle\Entity\User", mappedBy="verified")
+	 */
+	protected $user;
+
 
     /**
      * Get id
