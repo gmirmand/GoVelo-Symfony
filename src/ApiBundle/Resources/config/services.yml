@@ -2,3 +2,5 @@ services:
 #    api.example:
 #        class: ApiBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+framework:
+    serializer: { enable_annotations: true }

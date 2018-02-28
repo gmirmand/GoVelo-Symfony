@@ -12,8 +12,9 @@ use ApiPlatform\Core\Annotation\ApiProperty;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource
- *
+ * @ApiResource(attributes={
+ *     "normalization_context"={"groups"={"test"}, "enable_max_depth"=true}
+ * })
  * @ORM\Entity
  * @ORM\Table(name="user")
  */
@@ -27,11 +28,13 @@ class User extends BaseUser {
     
     /**
      * @ORM\Column(type="string")
+     * @Groups("test")
      */
     protected $firstname;
     
     /**
 	 * @ORM\Column(type="string")
+     * @Groups("test")
 	 */
     protected $lastname;
     
@@ -42,11 +45,13 @@ class User extends BaseUser {
     
     /**
 	 * @ORM\Column(type="date")
+     * @Groups("test")
 	 */
     protected $birth;
     
     /**
 	 * @ORM\Column(type="string", nullable=true)
+     * @Groups("test")
 	 */
     protected $picture;
     
@@ -65,6 +70,7 @@ class User extends BaseUser {
 	/**
 	 * @ORM\OneToOne(targetEntity="ApiBundle\Entity\Verified", inversedBy="user")
 	 * @ORM\JoinColumn(name="verified_id", referencedColumnName="id" ,nullable=true)
+     * @Groups("test")
 	 */
 	private $verified;
 

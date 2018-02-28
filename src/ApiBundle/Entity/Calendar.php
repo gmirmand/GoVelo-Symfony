@@ -4,11 +4,19 @@ namespace ApiBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiSubresource;
+use ApiPlatform\Core\Annotation\ApiProperty;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
+
 
 /**
  * Calendar
  *
  * @ApiResource
+ * @ApiResource(attributes={
+     *     "normalization_context"={"groups"={"test"}, "enable_max_depth"=true}
+     * })
  * @ORM\Table(name="calendar")
  * @ORM\Entity(repositoryClass="ApiBundle\Repository\CalendarRepository")
  */
@@ -16,7 +24,6 @@ class Calendar
 {
     /**
      * @var int
-     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -25,7 +32,7 @@ class Calendar
 
     /**
      * @var string
-     *
+     * @Groups("test")
      * @ORM\Column(name="type", type="string", length=255)
      */
     private $type;
@@ -33,6 +40,7 @@ class Calendar
     /**
      * @var string
      *
+     * @Groups("test")
      * @ORM\Column(name="day", type="string", length=255, nullable=true)
      */
     private $day;
@@ -40,6 +48,7 @@ class Calendar
     /**
      * @var \DateTime
      *
+     * @Groups("test")
      * @ORM\Column(name="start", type="datetime", nullable=true)
      */
     private $start;
@@ -47,12 +56,14 @@ class Calendar
     /**
      * @var \DateTime
      *
+     * @Groups("test")
      * @ORM\Column(name="end", type="datetime", nullable=true)
      */
     private $end;
 
 	/**
 	 * @ORM\ManyToMany(targetEntity="ApiBundle\Entity\announcement", mappedBy="calendar")
+     * @Groups("test")
 	 */
 	protected $announcement;
 
