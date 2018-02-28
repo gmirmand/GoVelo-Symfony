@@ -15,7 +15,8 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
  *
  * @ApiResource
  * @ApiResource(attributes={
-     *     "normalization_context"={"groups"={"test"}, "enable_max_depth"=true}
+     *     "normalization_context"={"groups"={"getAnnouncement"}},
+     *     "denormalization_context"={"groups"={"writeAnnouncement"}}
      * })
  * @ORM\Table(name="calendar")
  * @ORM\Entity(repositoryClass="ApiBundle\Repository\CalendarRepository")
@@ -27,12 +28,13 @@ class Calendar
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"getAnnouncement", "writeAnnouncement"})
      */
     private $id;
 
     /**
      * @var string
-     * @Groups("test")
+     * @Groups({"getAnnouncement"})
      * @ORM\Column(name="type", type="string", length=255)
      */
     private $type;
@@ -40,7 +42,7 @@ class Calendar
     /**
      * @var string
      *
-     * @Groups("test")
+     * @Groups({"getAnnouncement"})
      * @ORM\Column(name="day", type="string", length=255, nullable=true)
      */
     private $day;
@@ -48,7 +50,7 @@ class Calendar
     /**
      * @var \DateTime
      *
-     * @Groups("test")
+     * @Groups({"getAnnouncement"})
      * @ORM\Column(name="start", type="datetime", nullable=true)
      */
     private $start;
@@ -56,14 +58,13 @@ class Calendar
     /**
      * @var \DateTime
      *
-     * @Groups("test")
+     * @Groups({"getAnnouncement"})
      * @ORM\Column(name="end", type="datetime", nullable=true)
      */
     private $end;
 
 	/**
 	 * @ORM\ManyToMany(targetEntity="ApiBundle\Entity\announcement", mappedBy="calendar")
-     * @Groups("test")
 	 */
 	protected $announcement;
 

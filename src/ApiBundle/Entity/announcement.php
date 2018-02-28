@@ -4,6 +4,7 @@ namespace ApiBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
@@ -12,7 +13,8 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
  *
  *
  * @ApiResource(attributes={
- *     "normalization_context"={"groups"={"test"}, "enable_max_depth"=true}
+ *     "normalization_context"={"groups"={"getAnnouncement"}},
+ *     "denormalization_context"={"groups"={"writeAnnouncement"}}
  * })
  * @ORM\Table(name="announcement")
  * @ORM\Entity(repositoryClass="ApiBundle\Repository\announcementRepository")
@@ -24,78 +26,78 @@ class announcement {
 	 * @ORM\Column(name="id", type="integer")
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="AUTO")
-     * @Groups("test")
+     * @Groups("getAnnouncement")
 	 */
 	private $id;
 
 	/**
 	 * @var string
-     * @Groups("test")
+     * @Groups({"getAnnouncement", "writeAnnouncement"})
 	 * @ORM\Column(name="picture", type="string", length=535, nullable=true)
 	 */
 	private $picture;
 
 	/**
 	 * @var string
-     * @Groups("test")
+     * @Groups({"getAnnouncement", "writeAnnouncement"})
 	 * @ORM\Column(name="description", type="text", nullable=true)
 	 */
 	private $description;
 
 	/**
 	 * @var int
-	 * @Groups("test")
+	 * @Groups({"getAnnouncement", "writeAnnouncement"})
 	 * @ORM\Column(name="price_h", type="integer", nullable=true)
 	 */
 	private $priceH;
 
 	/**
 	 * @var int
-	 * @Groups("test")
+	 * @Groups({"getAnnouncement", "writeAnnouncement"})
 	 * @ORM\Column(name="price_d", type="integer", nullable=true)
 	 */
 	private $priceD;
 
 	/**
 	 * @var int
-	 * @Groups("test")
+	 * @Groups({"getAnnouncement", "writeAnnouncement"})
 	 * @ORM\Column(name="price_w", type="integer", nullable=true)
 	 */
 	private $priceW;
 
 	/**
 	 * @var string
-	 * @Groups("test")
+	 * @Groups({"getAnnouncement", "writeAnnouncement"})
 	 * @ORM\Column(name="city", type="string", length=255)
 	 */
 	private $city;
 
 	/**
 	 * @var string
-	 * @Groups("test")
+	 * @Groups({"getAnnouncement", "writeAnnouncement"})
 	 * @ORM\Column(name="adress", type="string", length=535, nullable=true)
 	 */
 	private $adress;
 
 	/**
 	 * @var string
-	 * @Groups("test")
+	 * @Groups({"getAnnouncement", "writeAnnouncement"})
 	 * @ORM\Column(name="lock_code", type="string", length=255, nullable=true)
 	 */
 	private $lockCode;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\User", inversedBy="announcement")
+	 * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\User", inversedBy="announcement", cascade={"persist"})
 	 * @ORM\JoinColumn(name="author_id", referencedColumnName="id" ,nullable=false)
-     * @Groups("test")
+     * @Groups({"getAnnouncement", "writeAnnouncement"})
      * @MaxDepth(2000)
 	 */
 	private $author;
 
 	/**
-	 * @ORM\ManyToMany(targetEntity="ApiBundle\Entity\Calendar", inversedBy="announcement")
+	 * @ORM\ManyToMany(targetEntity="ApiBundle\Entity\Calendar", inversedBy="announcement", cascade={"persist"})
 	 * @ORM\JoinColumn(name="calendar_id", referencedColumnName="id" ,nullable=true)
-     * @Groups("test")
+     * @Groups({"getAnnouncement", "writeAnnouncement"})
      * 
 	 */
 	private $calendar;

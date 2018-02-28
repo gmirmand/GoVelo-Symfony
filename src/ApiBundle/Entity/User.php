@@ -13,7 +13,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(attributes={
- *     "normalization_context"={"groups"={"test"}, "enable_max_depth"=true}
+ *     "normalization_context"={"groups"={"getAnnouncement", "getUser"}},
+ *     "denormaylization_context"={"groups"={"writeAnnouncement", "writeUser"}}
  * })
  * @ORM\Entity
  * @ORM\Table(name="user")
@@ -23,40 +24,43 @@ class User extends BaseUser {
 	 * @ORM\Id
 	 * @ORM\Column(type="integer")
 	 * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"getAnnouncement", "writeAnnouncement", "getUser"})
 	 */
 	protected $id;
     
     /**
      * @ORM\Column(type="string")
-     * @Groups("test")
+     * @Groups({"getAnnouncement", "writeUser", "getUser"})
      */
     protected $firstname;
     
     /**
 	 * @ORM\Column(type="string")
-     * @Groups("test")
+     * @Groups({"getAnnouncement", "writeUser", "getUser"})
 	 */
     protected $lastname;
     
     /**
 	 * @ORM\Column(type="string", nullable=true)
+     * @Groups({"getAnnouncement", "writeUser", "getUser"})
 	 */
     protected $phone;
     
     /**
 	 * @ORM\Column(type="date")
-     * @Groups("test")
+     * @Groups({"getAnnouncement", "writeUser"})
 	 */
     protected $birth;
     
     /**
 	 * @ORM\Column(type="string", nullable=true)
-     * @Groups("test")
+     * @Groups({"getAnnouncement", "writeUser"})
 	 */
     protected $picture;
     
     /**
 	 * @ORM\Column(type="integer")
+     * @Groups({"getAnnouncement", "writeUser"})
 	 */
     protected $sexe;
 
@@ -70,7 +74,7 @@ class User extends BaseUser {
 	/**
 	 * @ORM\OneToOne(targetEntity="ApiBundle\Entity\Verified", inversedBy="user")
 	 * @ORM\JoinColumn(name="verified_id", referencedColumnName="id" ,nullable=true)
-     * @Groups("test")
+     * @Groups("getAnnouncement")
 	 */
 	private $verified;
 
