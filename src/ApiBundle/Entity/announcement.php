@@ -90,7 +90,6 @@ class announcement {
 	 * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\User", inversedBy="announcement", cascade={"persist"})
 	 * @ORM\JoinColumn(name="author_id", referencedColumnName="id" ,nullable=false)
      * @Groups({"getAnnouncement", "writeAnnouncement"})
-     * @MaxDepth(2000)
 	 */
 	private $author;
 
@@ -101,6 +100,14 @@ class announcement {
      * 
 	 */
 	private $calendar;
+    
+    
+    /**
+	 * @ORM\ManyToMany(targetEntity="ApiBundle\Entity\Style", inversedBy="announcement", cascade={"persist"})
+	 * @ORM\JoinColumn(name="style_id", referencedColumnName="id" ,nullable=false)
+     * @Groups({"getAnnouncement", "writeAnnouncement"})
+	 */
+	private $style;
 
 
 	/**
@@ -346,5 +353,37 @@ class announcement {
 	 */
 	public function getCalendar() {
 		return $this->calendar;
+	}
+    
+    
+    /**
+	 * Add style
+	 *
+	 * @param \ApiBundle\Entity\Style $style
+	 *
+	 * @return announcement
+	 */
+	public function addStyle( \ApiBundle\Entity\Style $style ) {
+		$this->style[] = $style;
+
+		return $this;
+	}
+
+	/**
+	 * Remove style
+	 *
+	 * @param \ApiBundle\Entity\Style $style
+	 */
+	public function removeStyle( \ApiBundle\Entity\Style $style ) {
+		$this->style->removeElement( $style );
+	}
+
+	/**
+	 * Get style
+	 *
+	 * @return \Doctrine\Common\Collections\Collection
+	 */
+	public function getStyle() {
+		return $this->style;
 	}
 }

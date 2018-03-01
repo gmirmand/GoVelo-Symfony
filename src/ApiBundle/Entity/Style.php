@@ -4,11 +4,19 @@ namespace ApiBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiSubresource;
+use ApiPlatform\Core\Annotation\ApiProperty;
+
 
 /**
  * Style
  *
  * @ApiResource
+ * @ApiResource(attributes={
+     *     "normalization_context"={"groups"={"getAnnouncement"}},
+     *     "denormalization_context"={"groups"={"writeAnnouncement"}}
+     * })
  * @ORM\Table(name="style")
  * @ORM\Entity(repositoryClass="ApiBundle\Repository\StyleRepository")
  */
@@ -20,6 +28,7 @@ class Style
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"getAnnouncement", "writeAnnouncement"})
      */
     private $id;
 
@@ -27,8 +36,15 @@ class Style
      * @var string
      *
      * @ORM\Column(name="style", type="string", length=100)
+     * @Groups({"getAnnouncement"})
      */
     private $style;
+    
+    
+    /**
+	 * @ORM\ManyToMany(targetEntity="ApiBundle\Entity\announcement", mappedBy="style")
+	 */
+	protected $announcement;
 
 
     /**

@@ -29,7 +29,7 @@ class State
      * @ORM\Column(name="state", type="string", length=50)
      */
     private $state;
-
+    
 
     /**
      * Get id
