@@ -41,7 +41,7 @@ class User extends BaseUser {
     /**
      * @Groups({"writeUser"})
      */
-    protected $password;
+    protected $plainPassword;
     
     /**
      * @Groups({"writeUser"})
