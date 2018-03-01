@@ -268,7 +268,7 @@ class User extends BaseUser {
     /**
      * @ORM\ManyToMany(targetEntity="ApiBundle\Entity\medal", inversedBy="user")
      * @ORM\JoinColumn(name="medal_id", referencedColumnName="id" ,nullable=true)
-     * @Groups({"getAnnouncement", "getUser"})
+     * @Groups({"getUser"})
      */
     private $medal;
 
