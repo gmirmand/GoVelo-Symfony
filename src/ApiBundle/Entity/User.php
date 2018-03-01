@@ -14,7 +14,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(attributes={
  *     "normalization_context"={"groups"={"getAnnouncement", "getUser"}},
- *     "denormaylization_context"={"groups"={"writeAnnouncement", "writeUser"}}
+ *     "denormalization_context"={"groups"={"writeAnnouncement", "writeUser"}}
  * })
  * @ORM\Entity
  * @ORM\Table(name="user")
@@ -27,6 +27,26 @@ class User extends BaseUser {
      * @Groups({"getAnnouncement", "writeAnnouncement", "getUser"})
 	 */
 	protected $id;
+    
+    /**
+     * @Groups({"getUser", "writeUser"})
+     */
+    protected $email;
+    
+    /**
+     * @Groups({"getUser", "writeUser"})
+     */
+    protected $username;
+    
+    /**
+     * @Groups({"writeUser"})
+     */
+    protected $password;
+    
+    /**
+     * @Groups({"writeUser"})
+     */
+    protected $enabled;
     
     /**
      * @ORM\Column(type="string")
