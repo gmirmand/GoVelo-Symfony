@@ -16,7 +16,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     "normalization_context"={"groups"={"getAnnouncement", "getUser", "getRental"}},
  *     "denormalization_context"={"groups"={"writeAnnouncement", "writeUser"}}
  * })
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ApiBundle\Repository\UserRepository")
  * @ORM\Table(name="user")
  */
 class User extends BaseUser {
@@ -112,19 +112,22 @@ class User extends BaseUser {
     
     /**
 	 * @ORM\OneToMany(targetEntity="ApiBundle\Entity\Comment", mappedBy="author")
+      * @Groups("getUser")
 	 */
 	public $comment_author;
     
     
     /**
 	 * @ORM\OneToMany(targetEntity="ApiBundle\Entity\Comment", mappedBy="receiver")
+     * @Groups("getUser")
 	 */
 	public $comment_receiver;
-
+    
     
 	public function __construct() {
 		parent::__construct();
-		// your own logic
+		$this->comment_receiver = new \Doctrine\Common\Collections\ArrayCollection();
+		$this->comment_author = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 
     /**

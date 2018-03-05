@@ -11,7 +11,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * Comment
  *
- * @ApiResource
+ * @ApiResource(attributes={
+ *     "normalization_context"={"groups"={"getUser"}},
+ * })
  * @ORM\Table(name="comment")
  * @ORM\Entity(repositoryClass="ApiBundle\Repository\CommentRepository")
  */
@@ -29,13 +31,14 @@ class Comment
     /**
      * @var int
      *
+     * @Groups({"getUser"})
      * @ORM\Column(name="note", type="integer")
      */
     private $note;
 
     /**
      * @var string
-     *
+     * @Groups({"getUser"})
      * @ORM\Column(name="comment", type="text")
      */
     private $comment;
