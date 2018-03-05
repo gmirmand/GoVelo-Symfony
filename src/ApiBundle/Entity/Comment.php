@@ -4,6 +4,9 @@ namespace ApiBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiProperty;
+use ApiPlatform\Core\Annotation\ApiSubresource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Comment
@@ -37,6 +40,21 @@ class Comment
      */
     private $comment;
 
+    
+    /**
+	 * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\User", inversedBy="comment_author")
+	 * @ORM\JoinColumn(name="id_author", referencedColumnName="id")
+     * @Groups({"getComment"})
+	 */
+	private $author;
+    
+     /**
+	 * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\User", inversedBy="comment_receiver")
+	 * @ORM\JoinColumn(name="id_receiver", referencedColumnName="id")
+     * @Groups({"getComment"})
+	 */
+	private $receiver;
+    
 
     /**
      * Get id

@@ -2,13 +2,19 @@
 
 namespace ApiBundle\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiProperty;
+use ApiPlatform\Core\Annotation\ApiSubresource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Rental
  *
- * @ApiResource
+ * @ApiResource(attributes={
+ *     "normalization_context"={"groups"={"getRental"}},
+ *     "denormalization_context"={"groups"={"writeRental"}}
+ * })
  * @ORM\Table(name="rental")
  * @ORM\Entity(repositoryClass="ApiBundle\Repository\RentalRepository")
  */
@@ -25,24 +31,46 @@ class Rental
 
     /**
      * @var \DateTime
-     *
+     * @Groups({"getRental", "writeRental"})
      * @ORM\Column(name="start", type="datetime")
      */
     private $start;
 
     /**
      * @var \DateTime
-     *
+     * @Groups({"getRental", "writeRental"})
      * @ORM\Column(name="end", type="datetime")
      */
     private $end;
 
     /**
      * @var int
-     *
+     * @Groups({"getRental", "writeRental"})
      * @ORM\Column(name="price", type="integer")
      */
     private $price;
+    
+    
+    /**
+	 * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\User", inversedBy="rental_owner")
+	 * @ORM\JoinColumn(name="id_owner", referencedColumnName="id")
+     * @Groups({"getRental", "writeRental"})
+	 */
+	private $owner;
+    
+     /**
+	 * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\User", inversedBy="rental_renter")
+	 * @ORM\JoinColumn(name="id_renter", referencedColumnName="id")
+     * @Groups({"getRental", "writeRental"})
+	 */
+	private $renter;
+    
+    /**
+	 * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\announcement", inversedBy="rental")
+	 * @ORM\JoinColumn(name="id_announcement", referencedColumnName="id")
+     * @Groups({"getRental", "writeRental"})
+	 */
+	private $announcement;
 
 
     /**
