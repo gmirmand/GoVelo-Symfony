@@ -250,7 +250,7 @@ class User extends BaseUser {
     
     public function getVerified() //: Verified 
     {
-        if ($this->verified) {
+        /*if ($this->verified) {
             
             $id = $this->verified->getId(); 
 
@@ -262,7 +262,8 @@ class User extends BaseUser {
         } else {
             $return = false; 
         }
-        return $return; 
+        return $return; */
+        return $this->verified;
     }
     
     /**
