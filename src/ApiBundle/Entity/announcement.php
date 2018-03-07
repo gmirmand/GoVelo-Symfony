@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
  *
  *
  * @ApiResource(attributes={
- *     "normalization_context"={"groups"={"getAnnouncement"}},
+ *     "normalization_context"={"groups"={"getAnnouncement", "getRental"}},
  *     "denormalization_context"={"groups"={"writeAnnouncement"}}
  * })
  * @ORM\Table(name="announcement")
@@ -26,7 +26,7 @@ class announcement {
 	 * @ORM\Column(name="id", type="integer")
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="AUTO")
-     * @Groups("getAnnouncement")
+     * @Groups({"getAnnouncement", "getRental"})
 	 */
 	private $id;
 
@@ -108,6 +108,12 @@ class announcement {
      * @Groups({"getAnnouncement", "writeAnnouncement"})
 	 */
 	private $style;
+    
+    
+    /**
+	 * @ORM\OneToMany(targetEntity="ApiBundle\Entity\Rental", mappedBy="announcement", cascade={"persist"})
+	 */
+	private $rental;
 
 
 	/**

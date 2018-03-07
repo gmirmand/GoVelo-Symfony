@@ -13,10 +13,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(attributes={
- *     "normalization_context"={"groups"={"getAnnouncement", "getUser"}},
+ *     "normalization_context"={"groups"={"getAnnouncement", "getUser", "getRental"}},
  *     "denormalization_context"={"groups"={"writeAnnouncement", "writeUser"}}
  * })
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ApiBundle\Repository\UserRepository")
  * @ORM\Table(name="user")
  */
 class User extends BaseUser {
@@ -24,7 +24,7 @@ class User extends BaseUser {
 	 * @ORM\Id
 	 * @ORM\Column(type="integer")
 	 * @ORM\GeneratedValue(strategy="AUTO")
-     * @Groups({"getAnnouncement", "writeAnnouncement", "getUser"})
+     * @Groups({"getAnnouncement", "writeAnnouncement", "getUser", "getRental"})
 	 */
 	protected $id;
     
@@ -50,37 +50,37 @@ class User extends BaseUser {
     
     /**
      * @ORM\Column(type="string")
-     * @Groups({"getAnnouncement", "writeUser", "getUser"})
+     * @Groups({"getAnnouncement", "writeUser", "getUser", "getRental"})
      */
     protected $firstname;
     
     /**
 	 * @ORM\Column(type="string")
-     * @Groups({"getAnnouncement", "writeUser", "getUser"})
+     * @Groups({"getAnnouncement", "writeUser", "getUser", "getRental"})
 	 */
     protected $lastname;
     
     /**
 	 * @ORM\Column(type="string", nullable=true)
-     * @Groups({"getAnnouncement", "writeUser", "getUser"})
+     * @Groups({"getAnnouncement", "writeUser", "getUser", "getRental"})
 	 */
     protected $phone;
     
     /**
 	 * @ORM\Column(type="date")
-     * @Groups({"getAnnouncement", "writeUser"})
+     * @Groups({"getAnnouncement", "writeUser", "getRental"})
 	 */
     protected $birth;
     
     /**
 	 * @ORM\Column(type="string", nullable=true)
-     * @Groups({"getAnnouncement", "writeUser"})
+     * @Groups({"getAnnouncement", "writeUser", "getRental"})
 	 */
     protected $picture;
     
     /**
 	 * @ORM\Column(type="integer")
-     * @Groups({"getAnnouncement", "writeUser"})
+     * @Groups({"getAnnouncement", "writeUser", "getRental"})
 	 */
     protected $sexe;
 
@@ -94,14 +94,40 @@ class User extends BaseUser {
 	/**
 	 * @ORM\OneToOne(targetEntity="ApiBundle\Entity\Verified", inversedBy="user")
 	 * @ORM\JoinColumn(name="verified_id", referencedColumnName="id" ,nullable=true)
-     * @Groups("getAnnouncement")
+     * @Groups({"getAnnouncement", "getRental"})
 	 */
 	private $verified;
-
+    
+    
+    /**
+	 * @ORM\OneToMany(targetEntity="ApiBundle\Entity\Rental", mappedBy="owner")
+	 */
+	public $rental_owner;
+    
+    
+    /**
+	 * @ORM\OneToMany(targetEntity="ApiBundle\Entity\Rental", mappedBy="renter")
+	 */
+	public $rental_renter;
+    
+    /**
+	 * @ORM\OneToMany(targetEntity="ApiBundle\Entity\Comment", mappedBy="author")
+      * @Groups("getUser")
+	 */
+	public $comment_author;
+    
+    
+    /**
+	 * @ORM\OneToMany(targetEntity="ApiBundle\Entity\Comment", mappedBy="receiver")
+     * @Groups("getUser")
+	 */
+	public $comment_receiver;
+    
     
 	public function __construct() {
 		parent::__construct();
-		// your own logic
+		$this->comment_receiver = new \Doctrine\Common\Collections\ArrayCollection();
+		$this->comment_author = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 
     /**

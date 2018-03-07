@@ -4,11 +4,16 @@ namespace ApiBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiProperty;
+use ApiPlatform\Core\Annotation\ApiSubresource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Comment
  *
- * @ApiResource
+ * @ApiResource(attributes={
+ *     "normalization_context"={"groups"={"getUser"}},
+ * })
  * @ORM\Table(name="comment")
  * @ORM\Entity(repositoryClass="ApiBundle\Repository\CommentRepository")
  */
@@ -26,17 +31,33 @@ class Comment
     /**
      * @var int
      *
+     * @Groups({"getUser"})
      * @ORM\Column(name="note", type="integer")
      */
     private $note;
 
     /**
      * @var string
-     *
+     * @Groups({"getUser"})
      * @ORM\Column(name="comment", type="text")
      */
     private $comment;
 
+    
+    /**
+	 * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\User", inversedBy="comment_author")
+	 * @ORM\JoinColumn(name="id_author", referencedColumnName="id")
+     * @Groups({"getComment"})
+	 */
+	private $author;
+    
+     /**
+	 * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\User", inversedBy="comment_receiver")
+	 * @ORM\JoinColumn(name="id_receiver", referencedColumnName="id")
+     * @Groups({"getComment"})
+	 */
+	private $receiver;
+    
 
     /**
      * Get id
