@@ -8,13 +8,15 @@ use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
+use Algolia\AlgoliaSearchBundle\Mapping\Annotation as Algolia;
+
 
 /**
  *
  *
  * @ApiResource(attributes={
  *     "normalization_context"={"groups"={"getAnnouncement", "getRental"}},
- *     "denormalization_context"={"groups"={"writeAnnouncement, writeRental"}}
+ *     "denormalization_context"={"groups"={"writeAnnouncement"}}
  * })
  * @ORM\Table(name="announcement")
  * @ORM\Entity(repositoryClass="ApiBundle\Repository\announcementRepository")
@@ -34,6 +36,8 @@ class announcement {
 	 * @var string
      * @Groups({"getAnnouncement", "writeAnnouncement"})
 	 * @ORM\Column(name="title", type="text", nullable=true)
+     *
+     * @Algolia\Attribute(algoliaName="title")
 	 */
 	private $title;
     
@@ -48,6 +52,8 @@ class announcement {
 	 * @var string
      * @Groups({"getAnnouncement", "writeAnnouncement"})
 	 * @ORM\Column(name="description", type="text", nullable=true)
+     * @Algolia\Attribute(algoliaName="description")
+     *
 	 */
 	private $description;
 
@@ -64,6 +70,8 @@ class announcement {
 	 * @var string
 	 * @Groups({"getAnnouncement", "writeAnnouncement"})
 	 * @ORM\Column(name="city", type="string", length=255)
+     * @Algolia\Attribute(algoliaName="city")
+     *
 	 */
 	private $city;
 
@@ -124,6 +132,7 @@ class announcement {
 	 * Get title
 	 *
 	 * @return string
+     * 
 	 */
 	public function getTitle() {
 		return $this->title;
@@ -182,6 +191,7 @@ class announcement {
 	 * Get description
 	 *
 	 * @return string
+     * 
 	 */
 	public function getDescription() {
 		return $this->description;
@@ -228,6 +238,7 @@ class announcement {
 	 * Get city
 	 *
 	 * @return string
+     *
 	 */
 	public function getCity() {
 		return $this->city;
