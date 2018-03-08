@@ -50,6 +50,13 @@ class Rental
      */
     private $price;
     
+    /**
+     * @var int
+     * @Groups({"getRental", "writeRental"})
+     * @ORM\Column(name="accepted", type="integer", options={"default" : 1})
+     */
+    private $accepted;
+    
     
     /**
 	 * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\User", inversedBy="rental_owner")
@@ -71,7 +78,7 @@ class Rental
      * @Groups({"getRental", "writeRental"})
 	 */
 	private $announcement;
-
+    
 
     /**
      * Get id
@@ -222,6 +229,32 @@ class Rental
     public function getAnnouncement()
     {
         return $this->announcement;
+    }
+
+    
+     /**
+     * Get accepted
+     *
+     * @return int
+     */
+    public function getAccepted()
+    {
+        return $this->accepted;
+    }
+    
+    
+    /**
+     * Set accepted
+     *
+     * @param integer $accepted
+     *
+     * @return Rental
+     */
+    public function setAccepted($accepted)
+    {
+        $this->accepted = $accepted;
+
+        return $this;
     }
 
     
