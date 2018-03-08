@@ -211,6 +211,12 @@ fabric.properties
 # Build data
 /build/
 
+#Crea pro
+/error
+/stats
+.htaccess
+
+
 # Backup entities generated with doctrine:generate:entities command
 **/Entity/*~
 
