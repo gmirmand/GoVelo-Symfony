@@ -154,5 +154,76 @@ class Rental
     {
         return $this->price;
     }
+    
+    /**
+	 * Set owner
+	 *
+	 * @param \ApiBundle\Entity\User $owner
+	 *
+	 * @return Rental
+	 */
+	public function setOwner( \ApiBundle\Entity\User $owner ) {
+		$this->owner = $owner;
+
+		return $this;
+	}
+
+	/**
+	 * Get owner
+	 *
+	 * @return \ApiBundle\Entity\User
+	 */
+	public function getOwner() {
+		return $this->owner;
+	}
+    
+    /**
+	 * Set renter
+	 *
+	 * @param \ApiBundle\Entity\User $renter
+	 *
+	 * @return Rental
+	 */
+	public function setRenter( \ApiBundle\Entity\User $renter ) {
+		$this->renter = $renter;
+
+		return $this;
+	}
+
+	/**
+	 * Get renter
+	 *
+	 * @return \ApiBundle\Entity\User
+	 */
+	public function getRenter() {
+		return $this->renter;
+	}
+    
+    
+    /**
+     * Set announcement
+     *
+     * @param string $announcement
+     *
+     * @return Rental
+     */
+    public function setAnnouncement($announcement)
+    {
+        $this->announcement = $announcement;
+
+        return $this;
+    }
+
+    /**
+     * Get announcement
+     *
+     * @return \ApiBundle\Entity\announcement
+     */
+    public function getAnnouncement()
+    {
+        return $this->announcement;
+    }
+
+    
 }
 

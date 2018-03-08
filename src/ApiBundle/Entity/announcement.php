@@ -14,7 +14,7 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
  *
  * @ApiResource(attributes={
  *     "normalization_context"={"groups"={"getAnnouncement", "getRental"}},
- *     "denormalization_context"={"groups"={"writeAnnouncement"}}
+ *     "denormalization_context"={"groups"={"writeAnnouncement, writeRental"}}
  * })
  * @ORM\Table(name="announcement")
  * @ORM\Entity(repositoryClass="ApiBundle\Repository\announcementRepository")
@@ -26,17 +26,24 @@ class announcement {
 	 * @ORM\Column(name="id", type="integer")
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="AUTO")
-     * @Groups({"getAnnouncement", "getRental"})
+     * @Groups({"getAnnouncement", "getRental", "writeRental"})
 	 */
 	private $id;
 
 	/**
 	 * @var string
      * @Groups({"getAnnouncement", "writeAnnouncement"})
+	 * @ORM\Column(name="title", type="text", nullable=true)
+	 */
+	private $title;
+    
+    /**
+	 * @var string
+     * @Groups({"getAnnouncement", "writeAnnouncement"})
 	 * @ORM\Column(name="picture", type="string", length=535, nullable=true)
 	 */
 	private $picture;
-
+    
 	/**
 	 * @var string
      * @Groups({"getAnnouncement", "writeAnnouncement"})
@@ -44,12 +51,6 @@ class announcement {
 	 */
 	private $description;
 
-	/**
-	 * @var int
-	 * @Groups({"getAnnouncement", "writeAnnouncement"})
-	 * @ORM\Column(name="price_h", type="integer", nullable=true)
-	 */
-	private $priceH;
 
 	/**
 	 * @var int
@@ -58,12 +59,6 @@ class announcement {
 	 */
 	private $priceD;
 
-	/**
-	 * @var int
-	 * @Groups({"getAnnouncement", "writeAnnouncement"})
-	 * @ORM\Column(name="price_w", type="integer", nullable=true)
-	 */
-	private $priceW;
 
 	/**
 	 * @var string
@@ -124,6 +119,29 @@ class announcement {
 	public function getId() {
 		return $this->id;
 	}
+    
+    /**
+	 * Get title
+	 *
+	 * @return string
+	 */
+	public function getTitle() {
+		return $this->title;
+	}
+    
+    
+    /**
+	 * Set title
+	 *
+	 * @param string $title
+	 *
+	 * @return announcement
+	 */
+	public function setTitle( $title ) {
+		$this->title = $title;
+
+		return $this;
+	}
 
 	/**
 	 * Set picture
@@ -169,27 +187,6 @@ class announcement {
 		return $this->description;
 	}
 
-	/**
-	 * Set priceH
-	 *
-	 * @param integer $priceH
-	 *
-	 * @return announcement
-	 */
-	public function setPriceH( $priceH ) {
-		$this->priceH = $priceH;
-
-		return $this;
-	}
-
-	/**
-	 * Get priceH
-	 *
-	 * @return int
-	 */
-	public function getPriceH() {
-		return $this->priceH;
-	}
 
 	/**
 	 * Set priceD
@@ -213,27 +210,6 @@ class announcement {
 		return $this->priceD;
 	}
 
-	/**
-	 * Set priceW
-	 *
-	 * @param integer $priceW
-	 *
-	 * @return announcement
-	 */
-	public function setPriceW( $priceW ) {
-		$this->priceW = $priceW;
-
-		return $this;
-	}
-
-	/**
-	 * Get priceW
-	 *
-	 * @return int
-	 */
-	public function getPriceW() {
-		return $this->priceW;
-	}
 
 	/**
 	 * Set city

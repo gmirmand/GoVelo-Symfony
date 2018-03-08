@@ -33,21 +33,6 @@ class Calendar
     private $id;
 
     /**
-     * @var string
-     * @Groups({"getAnnouncement"})
-     * @ORM\Column(name="type", type="string", length=255)
-     */
-    private $type;
-
-    /**
-     * @var string
-     *
-     * @Groups({"getAnnouncement"})
-     * @ORM\Column(name="day", type="string", length=255, nullable=true)
-     */
-    private $day;
-
-    /**
      * @var \DateTime
      *
      * @Groups({"getAnnouncement"})
@@ -77,54 +62,6 @@ class Calendar
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return Calendar
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * Set day
-     *
-     * @param string $day
-     *
-     * @return Calendar
-     */
-    public function setDay($day)
-    {
-        $this->day = $day;
-
-        return $this;
-    }
-
-    /**
-     * Get day
-     *
-     * @return string
-     */
-    public function getDay()
-    {
-        return $this->day;
     }
 
     /**
