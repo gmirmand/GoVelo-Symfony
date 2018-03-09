@@ -1,0 +1,65 @@
+
+//ANNOUNCEMENT POST
+{
+  "picture": "testesting",
+  "description": "tqseddesstring",
+  "title": "Le titre",
+  "priceD": 220,
+  "city": "scity",
+  "adress": "adressing",
+  "lockCode": "420",
+  "author": {
+	"@id": "/api/users/1",
+	"id": 1
+  },
+  "calendar": [
+    {
+	"@id": "/api/calendars/1",
+	"id": 1
+    }
+   ],
+ "style": [
+    {
+        "@id": "/api/styles/1",
+	"id": 1
+    }
+  ]
+}
+
+
+//USER POST
+{
+  "email": "string",
+  "username": "string",
+  "enabled": true,
+  "plainPassword": "mdptest", // NE S'AFFICHE PAS 
+  "firstname": "string",
+  "lastname": "string",
+  "phone": "string",
+  "birth": "2018-03-01T11:03:47.845Z",
+  "picture": "string",
+  "sexe": 0
+}
+
+//RENTAL POST
+{
+  "start": "2018-03-08T09:47:49.753Z",
+  "end": "2018-03-08T09:47:49.753Z",
+  "price": 0,
+  "owner": {
+	"@id": "/api/users/1",
+	"id": 1
+	},
+  "renter": {
+	"@id": "/api/users/6",
+	"id": 6
+	},
+  "announcement": {
+	"@id": "/api/announcements/3",
+	"id": 3
+	}
+}
+
+
+
+//
