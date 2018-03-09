@@ -11,7 +11,7 @@ parameters:
 
 framework:
     #esi: ~
-    #translator: { fallbacks: ['%locale%'] }
+    translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -86,6 +86,13 @@ fos_rest:
     view:
         view_response_listener: true
 
+fos_oauth_server:
+    db_driver: orm
+    client_class: ApiBundle\Entity\Client
+    access_token_class: ApiBundle\Entity\AccessToken
+    refresh_token_class: ApiBundle\Entity\RefreshToken
+    auth_code_class: ApiBundle\Entity\AuthCode
+
 api_platform:
     # The title of the API.
     title: 'GoVélo!'
@@ -140,10 +147,10 @@ api_platform:
         flow: 'application'
 
         # The oauth token url.
-        tokenUrl: '/oauth/v2/token'
+        tokenUrl: http://localhost:8080/GoVelo-Symfony/web/app_dev.php/oauth/v2/token
 
         # The oauth authentication url.
-        authorizationUrl: '/oauth/v2/auth'
+        authorizationUrl: http://localhost:8080/GoVelo-Symfony/web/app_dev.php/oauth/v2/auth
 
         # The oauth scopes.
         scopes: []

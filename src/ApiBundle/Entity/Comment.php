@@ -12,7 +12,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * Comment
  *
  * @ApiResource(attributes={
- *     "normalization_context"={"groups"={"getUser"}},
+ *     "normalization_context"={"groups"={"getUser", "getComment"}},
+ *     "denormalization_context"={"groups"={"writeComment"}}
  * })
  * @ORM\Table(name="comment")
  * @ORM\Entity(repositoryClass="ApiBundle\Repository\CommentRepository")
@@ -25,20 +26,21 @@ class Comment
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Groups({"getUser", "getComment"})
      */
     private $id;
 
     /**
      * @var int
      *
-     * @Groups({"getUser"})
+     * @Groups({"getUser", "getComment", "writeComment"})
      * @ORM\Column(name="note", type="integer")
      */
     private $note;
 
     /**
      * @var string
-     * @Groups({"getUser"})
+     * @Groups({"getUser", "getComment",  "writeComment"})
      * @ORM\Column(name="comment", type="text")
      */
     private $comment;
@@ -47,14 +49,14 @@ class Comment
     /**
 	 * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\User", inversedBy="comment_author")
 	 * @ORM\JoinColumn(name="id_author", referencedColumnName="id")
-     * @Groups({"getComment"})
+     * @Groups({"getUser", "getComment", "writeComment"})
 	 */
 	private $author;
     
      /**
 	 * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\User", inversedBy="comment_receiver")
 	 * @ORM\JoinColumn(name="id_receiver", referencedColumnName="id")
-     * @Groups({"getComment"})
+     * @Groups({"getUser", "getComment", "writeComment"})
 	 */
 	private $receiver;
     
