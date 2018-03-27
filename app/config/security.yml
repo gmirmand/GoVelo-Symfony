@@ -20,7 +20,7 @@ security:
             stateless: true
             anonymous: true
             form_login:
-                check_path: /api/login_check
+                check_path:               /api/login_check
                 username_parameter: username
                 password_parameter: password
                 success_handler:          lexik_jwt_authentication.handler.authentication_success
@@ -29,15 +29,9 @@ security:
                 
 
         api:
-            pattern:   ^/api
+            pattern:   ^/api^
             stateless: true
-            lexik_jwt: 
-                authorization_header:
-                    enabled: true
-                    prefix: Bearer
-                query_parameter:
-                    enabled: true
-                    name: bearer
+            lexik_jwt: ~
             #guard:
                 #authenticators:
                     #- lexik_jwt_authentication.jwt_token_authenticator
@@ -63,9 +57,7 @@ security:
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         in_memory:
-            memory: 
-                users:
-                    admin: { password: admin, roles: [ 'ROLE_ADMIN' ] }
+            memory: ~
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
