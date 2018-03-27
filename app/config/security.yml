@@ -28,14 +28,13 @@ security:
                 require_previous_session: false
 
                     
-        main:
-            pattern: ^/
-            form_login:
-                provider: fos_userbundle
-                csrf_token_generator: security.csrf.token_manager
-            logout:       true
-            anonymous:    true
-                    
+        #main:
+            #pattern: ^/
+            #form_login:
+             #   provider: fos_userbundle
+              #  csrf_token_generator: security.csrf.token_manager
+            #logout:       true
+            #anonymous:    true
        
 
     access_control:
@@ -57,12 +56,3 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        main:
-            anonymous: ~
-            # activate different ways to authenticate
-
-            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-            #http_basic: ~
-
-            # https://symfony.com/doc/current/security/form_login_setup.html
-            #form_login: ~
