@@ -2,6 +2,9 @@ app:
     resource: '@ApiBundle/Controller/'
     type: annotation
 
+api_login_check:
+    path: /api/login_check
+    
 api:
     resource: '.'
     type: 'api_platform'
@@ -32,6 +35,3 @@ fos_user:
 announcement:
     type: rest
     resource: ApiBundle\Controller\AnnouncementController
-
-api_login_check:
-    path: /api/login_check
