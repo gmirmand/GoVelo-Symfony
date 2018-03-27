@@ -27,6 +27,14 @@ security:
                 failure_handler:          lexik_jwt_authentication.handler.authentication_failure
                 require_previous_session: false
 
+                    
+        #main:
+            #pattern: ^/
+            #form_login:
+             #   provider: fos_userbundle
+              #  csrf_token_generator: security.csrf.token_manager
+            #logout:       true
+            #anonymous:    true
        
 
     access_control:
