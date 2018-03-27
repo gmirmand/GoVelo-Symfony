@@ -45,7 +45,6 @@ security:
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api,       roles: ROLE_USER }
-        - { path: ^/announcements$, role: ROLE_USER }
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
