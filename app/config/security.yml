@@ -27,14 +27,6 @@ security:
                 failure_handler:          lexik_jwt_authentication.handler.authentication_failure
                 require_previous_session: false
 
-                    
-        #main:
-            #pattern: ^/
-            #form_login:
-             #   provider: fos_userbundle
-              #  csrf_token_generator: security.csrf.token_manager
-            #logout:       true
-            #anonymous:    true
        
 
     access_control:
@@ -43,7 +35,7 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api,       roles: ROLE_USER }
+        - { path: ^/api,       roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
