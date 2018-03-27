@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="landin-page">
+        <div id="application">
+            <div id="img_explication">
+                <img class="mochup_img responsive_img" src="{{ asset('img/mockup-appli.png') }}"
+                     alt="GoVélo!">
+            </div>
+            <div id="text_application">
+                <h2 class="blue_text">Notre application</h2>
+                <p>Elle apporte une solution de location de vélos dans les petites et moyennes villes.
+                        ELle va permettre la facilité , les déplacements en ville en les désengorgeant.
+                        Elle permettra également une réduction des coûts de transport,
+                        nous pouvons donc dire que c’est une alternative aux transports en commun.</p>
+            </div>
+        </div>
+        <div id="application-video">
+            <iframe  src="https://www.youtube.com/embed/8ihDzw2lU-8?rel=0"
+                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen class="video"> </iframe>
+        </div>
+        <div id="application-fonctionnalite">
+            <div class="">
+                <div id="application-fonctionnalite-title">
+                    <h2 class="blue_text">Nos fonctionnalités</h2>
+                    <p>Notre clé étant la sécurité, nous ferons tout pour que vous ayez confiance en nous !
+                        Ludique et interactive, notre application peut être vue comme un réseau social !
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="zone_icon">
+                            <img class="responsive_img icon_img" src="{{ asset('img/icone-securite.png') }}"
+                                 alt="GoVélo! moyens de paiement">
+                            <p>APPLICATION SÉCURISÉ</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="zone_icon">
+                            <img class="responsive_img icon_img" src="{{ asset('img/icone-profil-certifie.png') }}"
+                                 alt="GoVélo! profils certifiés">
+                            <p>PROFILS CERTIFIÉS</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="zone_icon">
+                            <img class="responsive_img icon_img" src="{{ asset('img/icone-moyens-paiement.png') }}"
+                                 alt="GoVélo! sécurité">
+                            <p>PLUSIEURS MOYENS DE PAIEMENTS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="info_type">
+            <div class="proprietaire-container">
+                <div id="proprietaire_zone">
+                    <div id="proprietaire_zone_title">
+                        <h2>VOUS ETES PROPRIETAIRE ?</h2>
+                    </div>
+                </div>
+                <div id="proprietaire_zone_text">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Nunc faucibus sapien vitae feugiat accumsan.</p>
+                </div>
+            </div>
+            <div class="usager-container">
+                <div id="usager_zone">
+                    <div id="usager_zone_title">
+                        <h2>VOUS ETES USAGER ?</h2>
+                    </div>
+                </div>
+                <div id="usager_zone_text">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Nunc faucibus sapien vitae feugiat accumsan.</p>
+                </div>
+            </div>
+        </div>
+        <div id="actualites">
+            <div class="container">
+                <div id="actualite_title">
+                    <h2 class="blue_text">Nos actualités</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="actualite_container" id="actu_1">
+                            <p class="actu_date">15 <br/> NOV</p>
+                            <h3>Enquêtes</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Nunc faucibus sapien vitae feugiat accumsan.
+                                Duis facilisis ac lacus a hendrerit.
+                                Aenean in metus nec justo dictum scelerisque.
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="actualite_container" id="actu_2">
+                            <p class="actu_date">15 <br/> NOV</p>
+                            <h3>Date de sortie</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Nunc faucibus sapien vitae feugiat accumsan.
+                                Duis facilisis ac lacus a hendrerit.
+                                Aenean in metus nec justo dictum scelerisque.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="actualite_container" id="actu_3">
+                            <p class="actu_date">15 <br/> NOV</p>
+                            <h3>GoVélo!</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Nunc faucibus sapien vitae feugiat accumsan.
+                                Duis facilisis ac lacus a hendrerit.
+                                Aenean in metus nec justo dictum scelerisque.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="application-telechargement">
+                    <div id="text_telechargement">
+                        <h2 class="white_text">TÉLÉCHARGER NOTRE APPLICATION</h2>
+                        <img class="logo_img responsive_img" src="{{ asset('img/android.png') }}" alt="GoVélo!">
+                        <img class="logo_img responsive_img" src="{{ asset('img/apple.png') }}" alt="GoVélo!">
+                    </div>
+                    <div id="img_telechargement">
+                        <img class="mochup_img responsive_img" src="{{ asset('img/mockup_footer.png') }}" alt="GoVélo!">
+                    </div>
+        </div>
+    </div>
+{% endblock %}
