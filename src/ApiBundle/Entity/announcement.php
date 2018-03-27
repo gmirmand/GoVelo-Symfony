@@ -16,7 +16,12 @@ use Algolia\AlgoliaSearchBundle\Mapping\Annotation as Algolia;
  *
  * @ApiResource(attributes={
  *     "normalization_context"={"groups"={"getAnnouncement", "getRental"}},
- *     "denormalization_context"={"groups"={"writeAnnouncement"}}
+ *     "denormalization_context"={"groups"={"writeAnnouncement"}},
+ *     "access_control"="is_granted('ROLE_ADMIN')", 
+ *     "collectionOperations"={
+ *         "get",
+ *         "post"={"access_control"="is_granted('ROLE_ADMIN')"}
+ *     },
  * })
  * @ORM\Table(name="announcement")
  * @ORM\Entity(repositoryClass="ApiBundle\Repository\announcementRepository")
