@@ -150,7 +150,10 @@ api_platform:
 
     swagger:
         # The swagger api keys.
-        api_keys: []
+        api_keys:
+             apiKey:
+                name: Authorization
+                type: header
 
     collection:
         # The default order of results.
