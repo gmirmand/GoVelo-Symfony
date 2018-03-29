@@ -1,0 +1,38 @@
+/**************************************
+*
+* PAGE CONTENUS
+*
+***************************************/
+.page-content{
+  padding: 0 50px;
+  @include respond-to(s) {
+    padding: 0 80px;
+  }
+  h1{
+    font-family:$font-titre;
+    color:$noir;
+    position: relative;
+    padding-bottom: 15px;
+    &:after{
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      display: block;
+      width: 80px;
+      height: 4px;
+      background-color: $noir;
+    }
+  }
+  h2{
+    font-weight:500;
+    padding-left:15px;
+  }
+  p{
+    color:$grey;
+    font-size:15px;
+  }
+  span{
+
+  }
+}

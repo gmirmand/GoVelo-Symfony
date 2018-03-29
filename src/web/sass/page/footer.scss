@@ -1,0 +1,101 @@
+/**************************************
+*
+* Footer
+*
+***************************************/
+#footer {
+  background:$noir;
+  .footer-desc{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    @include respond-to(s) {
+      flex-wrap: wrap;
+      flex-direction: row;
+      padding: 20px 50px 20px 50px;
+    }
+    > div{
+      padding-bottom:20px;
+    }
+    .a-propos{
+      width:100%;
+      @include respond-to(s) {
+        width: 40%;
+      }
+    }
+    .title_footer{
+      color:$vert;
+      font-size:20px;
+      text-transform: uppercase;
+      font-family:$font-titre;
+      &.contact{
+        padding-top:10px;
+      }
+    }
+    p{
+      color:$blanc;
+      font-size:15px;
+    }
+
+    .link-list{
+        padding-left:0px;
+        li{
+          a{
+            color:$grey;
+            font-size:15px;
+            font-weight:600;
+            &:hover{
+              text-decoration:none;
+              color:$blanc;
+            }
+          }
+          list-style: none;
+          padding-top:5px;
+        }
+      }
+
+  }
+
+  .footer-back{
+    text-align: center;
+    border-top:1px solid $blanc;
+    color: #fff;
+    a{
+      color: #fff;
+      &:hover, &focus{
+        text-decoration: none;
+      }
+    }
+    padding: 5px 0;
+  }
+}
+/***scroll go to top***/
+#scrollToTop{
+  width: 50px;
+  height: auto;
+  position: fixed;
+  right: 20px;
+  display:none;
+  bottom:50px;
+  z-index:20;
+  img{
+    width:100%;
+  }
+}
+#scrollToTop:hover{
+  text-decoration:none;
+}
+#scrollToTop.scrollAnim {
+  display:inline-block;
+  animation: sAnim 1s ease;
+}
+@keyframes sAnim {
+  0%{
+    bottom:-50px ;
+  }
+  100% {
+    bottom:50px ;
+  }
+}
+/*******/

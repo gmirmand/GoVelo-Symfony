@@ -1,16 +1,18 @@
 {% block header %}
 <header class="header-banner-top">
+    <div class="bg-header">
+    </div>
     <div class="main-navigation">
         <input type="checkbox" name="mobile-menu-toggle" id="mobile-menu-toggle" class="mobile-menu-box"/>
         <nav class="horizontal-nav primary-wrapper" role='navigation'>
             <ul>
-                <li class="active-link"><a href="#"><img src="{{ asset('img/logo_blanc_100.png') }}" alt="GoVélo!">
+                <li><a href="{{  path('homepage') }}"><img src="{{ asset('img/logo_blanc_100.png') }}" alt="GoVélo!">
                     </a></li>
-                <li class="active-link"><a href="#">Accueil</a></li>
-                <li><a href="#">Concept</a></li>
-                <li><a href="#">Vidéo</a></li>
-                <li><a href="#">Fonctionnalités</a></li>
-                <li><a href="#">Télécharger</a></li>
+                <li><a href="{{  path('homepage') }}">Accueil</a></li>
+                <li><a href="{% if  app.request.get('_route') == 'homepage' %}#application {% else %}{{ path('homepage') }}#application{% endif %}">Concept</a></li>
+                <li><a href="{% if  app.request.get('_route') == 'homepage' %}#application-video {% else %}{{ path('homepage') }}#application-video{% endif %}">Vidéo</a></li>
+                <li><a href="{% if  app.request.get('_route') == 'homepage' %}#application-fonctionnalite {% else %}{{ path('homepage') }}#application-fonctionnalite{% endif %}">Fonctionnalités</a></li>
+                <li><a href="{% if  app.request.get('_route') == 'homepage' %}#application-telechargement {% else %}{{ path('homepage') }}#application-telechargement{% endif %}">Télécharger</a></li>
             </ul>
             <button class="button__inverse">Télécharger</button>
 
@@ -19,10 +21,9 @@
     </div>
 
     <div class="banner">
-        <div class="primary-wrapper">
+        <div class="{% if  app.request.get('_route') == 'homepage' %}primary-wrapper-home {% else %}primary-wrapper{% endif %}">
             <a href="#" class="site-title"><img src="{{ asset('img/logo_blanc_150.png') }}" alt="GoVélo!"></a>
-            <div class="site-tagline"><h1><span>GoVélo!</span> L'APPLICATION DE LOCATION DE VÉLO</h1>
-                <p>ENTRE PARTICULIER</p>
+            <div class="site-tagline"><h1><span>GoVélo!</span> L'APPLICATION DE LOCATION DE VÉLO ENTRE PARTICULIER</h1>
             </div>
         </div>
     </div>

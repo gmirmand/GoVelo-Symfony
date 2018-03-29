@@ -1,5 +1,77 @@
 {% block footer %}
     <div id="footer">
-        <p>Mentions légale</p>
+        <div class="footer-desc">
+            <div class="a-propos">
+                <p class="title_footer">à propos</p>
+                <p>Une idée et une équipe motivée pour créer une application mobile innovante.
+                    Alliant collaboratif, mobilité, et technologie. GoVélo! Un projet qui vous séduira.</p>
+
+            </div>
+
+            <div class="link">
+                <p class="title_footer">Informations</p>
+                <ul class="link-list">
+                    <li>
+                        <a href="{{ path('bonnes-pratiques') }}">
+                            Les bonnes pratiques de location
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('cgu') }}">
+                            Conditions générales d'utilisation
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('assurance') }}">
+                            Notre partenaire assurance
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('guide-utilisation') }}">
+                            Guide d'utilisation de l'application
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="contact">
+                <p class="title_footer">Suivez-nous</p>
+                <ul class="link-list">
+                    <li>
+                        <a href="#">
+                            facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            tweeter
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            linkedin
+                        </a>
+                    </li>
+                </ul>
+
+                <p class="title_footer contact">Contactez nous</p>
+                <ul class="link-list">
+                    <li>
+                        <a href="mailto:govelo.contact@gmail.com">
+                            govelo.contact@gmail.com
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+        <div class="footer-back">
+            <a><a href="{{ path('mentions-legales')}}"> MENTIONS LÉGALES </a></p>
+            <p>2018&copy; GoVélo!</p>
+            <a href="#" id="scrollToTop">
+                <img src="{{ asset('img/arrow-rondbleu.png') }}" alt="Aller en haut de la page">
+            </a>
+        </div>
     </div>
 {% endblock %}

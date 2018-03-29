@@ -4,10 +4,11 @@
     padding:0.5em 0.5em;
     color:#fff;
     background-color:transparent;
+    transition: all .500s ease-in-out;
 
-    &::hover{
+    &:hover{
       background-color:#fff;
-      color:transparent;
+      color:$bleu;
     }
   }
   &__zoom {
