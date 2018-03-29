@@ -11,6 +11,7 @@ GoVelo.General.prototype = {
         if ($(".page-home")) {
             home.init();
         }
+
     }
 };
 

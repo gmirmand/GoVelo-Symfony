@@ -1,5 +1,15 @@
 .button {
-  &__contact {
+  &__inverse {
+    border:3px solid #fff;
+    padding:0.5em 0.5em;
+    color:#fff;
+    background-color:transparent;
+    transition: all .500s ease-in-out;
+
+    &:hover{
+      background-color:#fff;
+      color:$bleu;
+    }
   }
   &__zoom {
   }

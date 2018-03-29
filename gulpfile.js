@@ -19,7 +19,7 @@ var sassGlob = require('gulp-sass-glob');
 gulp.task('browser-sync', function () {
     browserSync.init({
         'port': 8080,
-        'proxy': 'govelo.dev/app_dev.php'
+        'proxy': 'http://localhost:8080/GoVelo-Symfony/web/app_dev.php'
     });
 });
 
@@ -41,7 +41,8 @@ var paths = {
         src: {
             vendors: [
                 // Libraries
-                'src/web/js/vendor/jquery-1.11.2.min.js'
+                'src/web/js/vendor/jquery-1.11.2.min.js',
+                'src/web/js/vendor/bootstrap/bootstrap.min.js'
             ],
             app: [
                 // Custom
