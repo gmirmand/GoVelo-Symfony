@@ -38,7 +38,7 @@ class Style
      *
      * @ORM\Column(name="style", type="string", length=100)
      * @Groups({"getAnnouncement"})
-     * @Algolia\Attribute(algoliaName="style")
+     * @Algolia\Attribute(algoliaName="nomStyle")
      */
     private $style;
     
