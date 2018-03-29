@@ -83,6 +83,14 @@ class User extends BaseUser {
      * @Groups({"getAnnouncement", "writeUser", "getRental"})
 	 */
     protected $sexe;
+    
+    
+    /**
+     * @var \DateTime
+     * @ORM\Column(type="datetime", name="date_inscription")
+     * @Groups({"getAnnouncement", "writeUser", "getRental"})
+     */
+    private $dateInscription;
 
 	/**
 	 * @ORM\OneToMany(targetEntity="ApiBundle\Entity\announcement", mappedBy="author")
@@ -128,6 +136,8 @@ class User extends BaseUser {
 		parent::__construct();
 		$this->comment_receiver = new \Doctrine\Common\Collections\ArrayCollection();
 		$this->comment_author = new \Doctrine\Common\Collections\ArrayCollection();
+        
+        $this->dateInscription = new \DateTime();
 	}
 
     /**
