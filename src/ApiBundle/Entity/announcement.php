@@ -69,14 +69,14 @@ class announcement {
 	/**
 	 * @var string
 	 * @Groups({"getAnnouncement", "writeAnnouncement"})
-	 * @ORM\Column(name="latitude", type="string", length=535, nullable=true)
+     * @ORM\Column(name="latitude", type="decimal", precision=10, scale=8, nullable=true)
 	 */
 	private $latitude;
     
     /**
 	 * @var string
 	 * @Groups({"getAnnouncement", "writeAnnouncement"})
-	 * @ORM\Column(name="longitude", type="string", length=535, nullable=true)
+     * @ORM\Column(name="longitude", type="decimal", precision=11, scale=8, nullable=true)
 	 */
 	private $longitude;
 
@@ -409,4 +409,14 @@ class announcement {
 	public function getStyle() {
 		return $this->style;
 	}
+    
+    /**
+     * @Algolia\Attribute(algoliaName="_geoloc")
+     */
+    public function getGeoloc()
+    {
+        return array("lat" => $this->getLatitude(), "lng" => $this->getLongitude());
+    }
+    
+    
 }
