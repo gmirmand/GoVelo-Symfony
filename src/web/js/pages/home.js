@@ -3,8 +3,6 @@ home = {
     container: $('.page-home'), /*<- tu peux définir des selecteur*/
     val: 'Coucou', /*<- ou des variables*/
     init: function () {
-        console.log('Home init');
-
         home.mouseBgEffect();
         home.scrollSlow();
         home.scrollToTop();
@@ -51,7 +49,6 @@ home = {
     scrollToTop: function () {
         /*home.container.append(home.val);*/
         $(window).scroll(function(){
-            console.log('scroll');
             if ($(this).scrollTop() > 250) {
                 $('#scrollToTop').addClass('scrollAnim');
             } else {

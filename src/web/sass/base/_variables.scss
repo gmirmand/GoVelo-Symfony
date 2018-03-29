@@ -1,7 +1,15 @@
+@font-face {
+  font-family: 'Neon 80s';
+  src:url('Neon-80s.ttf.woff') format('woff'),
+      url('../../fonts/Neon-80s.ttf.svg#Neon-80s') format('svg'),
+     url('../../fonts/Neon-80s.ttf.eot'),
+      url('../../fonts/Neon-80s.ttf.eot?#iefix') format('embedded-opentype');
+}
+
 /*TYPO*/
 $font-Arial: "Arial", "Open Sans", sans-serif;
 $font-titre : 'Neon 80s';
-$font-text: 'source sans';
+$font-text: 'Source Sans Pro', sans-serif;
 
 /*COLOR*/
 $bleu: #0B9CB3;
