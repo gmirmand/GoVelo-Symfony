@@ -5,7 +5,8 @@
   "description": "tqseddesstring",
   "title": "Le titre",
   "priceD": 220,
-  "city": "scity",
+  "longitude" : "2.123123",
+  "latitude" : "43.98461",
   "adress": "adressing",
   "lockCode": "420",
   "author": {
