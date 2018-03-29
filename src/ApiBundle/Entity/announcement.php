@@ -69,16 +69,22 @@ class announcement {
 	/**
 	 * @var string
 	 * @Groups({"getAnnouncement", "writeAnnouncement"})
-	 * @ORM\Column(name="city", type="string", length=255)
-     * @Algolia\Attribute(algoliaName="city")
-     *
+	 * @ORM\Column(name="latitude", type="string", length=535, nullable=true)
 	 */
-	private $city;
+	private $latitude;
+    
+    /**
+	 * @var string
+	 * @Groups({"getAnnouncement", "writeAnnouncement"})
+	 * @ORM\Column(name="longitude", type="string", length=535, nullable=true)
+	 */
+	private $longitude;
 
 	/**
 	 * @var string
 	 * @Groups({"getAnnouncement", "writeAnnouncement"})
 	 * @ORM\Column(name="adress", type="string", length=535, nullable=true)
+     * @Algolia\Attribute(algoliaName="adress")
 	 */
 	private $adress;
 
@@ -222,26 +228,49 @@ class announcement {
 
 
 	/**
-	 * Set city
+	 * Set latitude
 	 *
-	 * @param string $city
+	 * @param string $latitude
 	 *
 	 * @return announcement
 	 */
-	public function setCity( $city ) {
-		$this->city = $city;
+	public function setLatitude( $latitude ) {
+		$this->latitude = $latitude;
 
 		return $this;
 	}
 
 	/**
-	 * Get city
+	 * Get latitude
 	 *
 	 * @return string
      *
 	 */
-	public function getCity() {
-		return $this->city;
+	public function getLatitude() {
+		return $this->latitude;
+	}
+    
+    /**
+	 * Set longitude
+	 *
+	 * @param string $longitude
+	 *
+	 * @return announcement
+	 */
+	public function setLongitude( $longitude ) {
+		$this->longitude = $longitude;
+
+		return $this;
+	}
+
+	/**
+	 * Get longitude
+	 *
+	 * @return string
+     *
+	 */
+	public function getLongitude() {
+		return $this->longitude;
 	}
 
 	/**
