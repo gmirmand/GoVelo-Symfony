@@ -115,7 +115,6 @@ class announcement {
 	 * @ORM\ManyToMany(targetEntity="ApiBundle\Entity\Style", inversedBy="announcement", cascade={"persist"})
 	 * @ORM\JoinColumn(name="style_id", referencedColumnName="id" ,nullable=false)
      * @Groups({"getAnnouncement", "writeAnnouncement"})
-     * @Algolia\Attribute(algoliaName="style")
 	 */
 	private $style;
     
