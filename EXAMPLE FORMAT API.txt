@@ -64,3 +64,12 @@
 
 
 //
+parameters
+
+    algolia.application_id: Q2F9NYKFSS
+    algolia.api_key: 3f20a69221311de8180fa63c525d8b9d
+    jwt_private_key_path: '%kernel.root_dir%/../config/jwt/private.pem' # ssh private key path
+    jwt_public_key_path:  '%kernel.root_dir%/../config/jwt/public.pem'  # ssh public key path
+    jwt_key_pass_phrase:  'GoVelo'                                   # ssh key pass phrase
+    jwt_token_ttl:        3600
+
