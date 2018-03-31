@@ -8,6 +8,8 @@ use ApiPlatform\Core\Annotation\ApiSubresource;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
+use Algolia\AlgoliaSearchBundle\Mapping\Annotation as Algolia;
+
 
 
 /**
@@ -37,6 +39,7 @@ class Calendar
      *
      * @Groups({"getAnnouncement"})
      * @ORM\Column(name="start", type="datetime", nullable=true)
+     * @Algolia\Attribute(algoliaName="startCalendar")
      */
     private $start;
 
@@ -45,6 +48,7 @@ class Calendar
      *
      * @Groups({"getAnnouncement"})
      * @ORM\Column(name="end", type="datetime", nullable=true)
+     * @Algolia\Attribute(algoliaName="endCalendar")
      */
     private $end;
 

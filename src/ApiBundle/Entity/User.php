@@ -10,6 +10,8 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Algolia\AlgoliaSearchBundle\Mapping\Annotation as Algolia;
+
 
 /**
  * @ApiResource(attributes={
@@ -51,12 +53,14 @@ class User extends BaseUser {
     /**
      * @ORM\Column(type="string")
      * @Groups({"getAnnouncement", "writeUser", "getUser", "getRental"})
+     * @Algolia\Attribute(algoliaName="firstnameAuthor")
      */
     protected $firstname;
     
     /**
 	 * @ORM\Column(type="string")
      * @Groups({"getAnnouncement", "writeUser", "getUser", "getRental"})
+     * @Algolia\Attribute(algoliaName="lastnameAuthor")
 	 */
     protected $lastname;
     

@@ -29,6 +29,7 @@ class announcement {
 	 * @ORM\Id
 	 * @ORM\GeneratedValue(strategy="AUTO")
      * @Groups({"getAnnouncement", "getRental", "writeRental"})
+     * @Algolia\Attribute(algoliaName="id")
 	 */
 	private $id;
 
@@ -62,6 +63,7 @@ class announcement {
 	 * @var int
 	 * @Groups({"getAnnouncement", "writeAnnouncement"})
 	 * @ORM\Column(name="price_d", type="integer", nullable=true)
+     * @Algolia\Attribute(algoliaName="priceD")
 	 */
 	private $priceD;
 
@@ -87,6 +89,14 @@ class announcement {
      * @Algolia\Attribute(algoliaName="adress")
 	 */
 	private $adress;
+    
+    /**
+	 * @var string
+	 * @Groups({"getAnnouncement", "writeAnnouncement"})
+	 * @ORM\Column(name="city", type="string", length=255, nullable=true)
+     * @Algolia\Attribute(algoliaName="city")
+	 */
+	private $city;
 
 	/**
 	 * @var string
@@ -99,6 +109,7 @@ class announcement {
 	 * @ORM\ManyToOne(targetEntity="ApiBundle\Entity\User", inversedBy="announcement", cascade={"persist"})
 	 * @ORM\JoinColumn(name="author_id", referencedColumnName="id" ,nullable=false)
      * @Groups({"getAnnouncement", "writeAnnouncement"})
+     * @Algolia\Attribute(algoliaName="author")
 	 */
 	private $author;
 
@@ -106,6 +117,7 @@ class announcement {
 	 * @ORM\ManyToMany(targetEntity="ApiBundle\Entity\Calendar", inversedBy="announcement", cascade={"persist"})
 	 * @ORM\JoinColumn(name="calendar_id", referencedColumnName="id" ,nullable=true)
      * @Groups({"getAnnouncement", "writeAnnouncement"})
+     * @Algolia\Attribute(algoliaName="calendar")
      * 
 	 */
 	private $calendar;
@@ -417,6 +429,31 @@ class announcement {
     {
         return array("lat" => $this->getLatitude(), "lng" => $this->getLongitude());
     }
+    
+    
+    /**
+	 * Get city
+	 *
+	 * @return string
+     * 
+	 */
+	public function getCity() {
+		return $this->city;
+	}
+    
+    
+    /**
+	 * Set city
+	 *
+	 * @param string $city
+	 *
+	 * @return announcement
+	 */
+	public function setCity( $city ) {
+		$this->city = $city;
+
+		return $this;
+	}
     
     
 }
