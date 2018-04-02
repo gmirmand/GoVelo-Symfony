@@ -26,11 +26,13 @@
   }
   h2{
     font-weight:500;
-    padding-left:15px;
+    font-family:$font-titre;
   }
   p{
     color:$grey;
     font-size:15px;
+    margin-bottom:20px;
+    text-indent: 20px;
   }
   span{
 
