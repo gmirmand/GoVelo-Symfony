@@ -5,6 +5,7 @@ GoVélo Symfony V1
 You will find below the readme of the Symfone API and Website of GoVélo. 
 This Readme this base on the starter Symfony documentation, being already perfectly explained. 
 This project includes various technical issues such as an API Platform or Algolia.
+In any case, There is no witchcraft! We let you consult the documentation of the different technologies used and let you consult / understand the code thanks to the comments.
 
 To start working
 --------------
