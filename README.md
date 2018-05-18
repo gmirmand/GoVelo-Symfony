@@ -1,11 +1,10 @@
-Symfony Standard Edition
+GoVélo Symfony V1
 ========================
+<img src="https://scontent-mrs1-1.xx.fbcdn.net/v/t1.0-9/27971770_557297947996606_4067260897056891922_n.png?_nc_cat=0&oh=607b9a53aa2cafeed76e9b709efa1bc1&oe=5B954928" width="400" />
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
-
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+You will find below the readme of the Symfone API and Website of GoVélo. 
+This Readme this base on the starter Symfony documentation, being already perfectly explained. 
+This project includes various technical issues such as an API Platform or Algolia.
 
 To start working
 --------------
